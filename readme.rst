@@ -24,7 +24,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Don’t assume the local file system is permanent.
 - Don't keep session state in your application.
 
-## 3. Configuration stored in the environment
+3. Configuration stored in the environment
 ---------------------------------------------------
 
 - Make your app to use environment variables out of the box.
@@ -32,7 +32,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Provide a documentation file – simple ``readme.md`` will do
 - Allow to mount configuration files as a volume – if modification of the app is not possible
 
-## 4. Services exported via port bindings
+4. Services exported via port bindings
 ---------------------------------------------------
 
 - Don’t rely on runtime injection of a webserver into the execution environment to create a web-facing service
@@ -42,7 +42,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Remember that an external proxy is a thing – your app should be prepared to have it’s base address rewritten (e.g. passed as env vars)
 - Make apps, not libraries
 
-## 5. Fast startup and graceful shutdown
+5. Fast startup and graceful shutdown
 ---------------------------------------------------
 
 - Startup should take a few seconds – counting from the time the launch command is executed 
@@ -50,7 +50,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - React on a ``SIGTERM`` signal – perform a graceful shutdown and free all resources (release locks, close ports etc.)
 - Be robust against sudden death – handle unexpected, non-graceful terminations (such as clients disconnect or timeouts)
 
-## 6. Logs treated as event streams
+6. Logs treated as event streams
 ---------------------------------------------------
 
 - Treat logs as streams and write them unbuffered, to stdout or stderr
@@ -58,7 +58,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Don’t write logs to the file system 
 - Don’t attempt to manage logfiles
 
-## 7. Reasonably small size
+7. Reasonably small size
 ---------------------------------------------------
 
 - Use a smaller base image. Alpine is the way to start. Most likely, there are alpine tags for the programming language you are using
@@ -71,14 +71,14 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Verify the quality of your images – lint your ``Dockerfile``s in external tools such as http://www.fromlatest.io
 
 
-## 8. Verifiable readiness and health status
+8. Verifiable readiness and health status
 ---------------------------------------------------
 
 - Expose health-check endpoints
 - Use HTTP endpoints where possible
 - Provide an additional shell scripts where HTTP is not an option
 
-## 9. Discoverability
+9. Discoverability
 ---------------------------------------------------
 
 - Give meaningful content where it is expected – when the container exposes port `80` or `8080`, it is expected that hitting the base URL 
@@ -89,7 +89,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Use Swagger for API description and expose the definition in your app
 - Embed Swagger Sandbox right in your application
 
-## 10. Unidirectional, declarative deployment
+10. Unidirectional, declarative deployment
 ---------------------------------------------------
 
 - Be as declarative as possible when describing your deployment – prefer deployment descriptors
@@ -103,7 +103,7 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Ship admin code with application code to avoid synchronization issues – things such as database migrations, one-time scripts
 - Run admin/management tasks as one-off processes
 
-## 11. Dev/Prod parity
+11. Dev/Prod parity
 ---------------------------------------------------
 
 - Make the time gap small - write code and have it deployed hours or even just minutes later (or fight for it if it’s still impossible!)
@@ -113,5 +113,5 @@ A checklist for containers - 11 things that will make your app production-ready.
 - Use declarative provisioning tools such as **Puppet**, **Ansible**, **Chef** along with lightweight virtual environments like **Vagrant** 
   to run local environments which closely approximate production
 - Give a great zero-to-dev experience – preferably a one-liner 
- (like ``vagrant up`` or ``docker-compose up``) to spin the whole thing up, 
+  (like ``vagrant up`` or ``docker-compose up``) to spin the whole thing up, 
   a ``readme.md`` comment wouldn’t kill you either.
